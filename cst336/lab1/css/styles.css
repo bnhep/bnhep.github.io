@@ -1,0 +1,133 @@
+body { /*selector for body section*/
+    background-color: #fdfbd4;
+    color:black;
+}
+
+header, main, nav, footer, #content { /*selector to these elements changing alignment */
+    text-align: center;
+}
+
+nav a { /*links within "nav" container */
+    padding: 15px;
+    padding-bottom: 4px;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-decoration: none; /*removes underline */
+    color: black;   /* by default, links are blue */
+}
+
+nav a:hover { /*hover to select elements */
+    border-bottom: 2px #ebaf61 solid;
+    font-size: 2em;
+    transition: .9s; /*transistion effect*/
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.75em;
+    color: #707562;
+    padding: 25px;
+}
+
+nav a.current {
+    color: #ebaf61;
+    font-weight: bolder;
+    font-size: 2.2em;
+}
+
+table {
+    margin: 0px auto;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+td {
+    padding-right: 10px;
+    font-size: 1.3em;
+}
+
+td strong {
+    color: #ebaf61;
+}
+
+#table-header {
+    background-color: #be5959;
+}
+
+.table-row {
+    background-color: aquamarine;
+}
+
+ul {
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.hobby {
+    font-weight: bolder;
+    color: #ebaf61;
+}
+
+.welcome_text {
+    margin: 5px;
+    text-align: left;
+    width: 220px;
+    height: 440px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    white-space: normal;
+    overflow: auto;
+}
+
+.welcome_photo {
+    height: 450px;
+    border: 2px;
+    border-radius: 10px;
+}
+
+.footer_logo {
+    padding: 5px;
+    margin: 0 auto;    
+    width: 300px;
+    height: auto;
+}
+
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 350;
+  font-style: normal;
+}
+
+
+
+h1 {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 650;
+  font-style: normal;
+}
+
+
+h3 {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 550;
+  font-style: normal;
+}
+
+figcaption {
+    margin: 0 auto;
+    width: 450px;  
+}

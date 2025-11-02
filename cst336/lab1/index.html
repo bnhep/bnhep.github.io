@@ -1,13 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 1: Personal Portfolio</title>
-</head>
-<body>
+<html>
 
-    <h1>Lab 1: Personal Portfolio</h1>
-    
-</body>
+    <head>
+        <!-- character encoding for browser, UTF-8 = unicode  -->
+        <meta charset="UTF-8">
+        <!-- Title as part of the tab of the webpage -->
+        <title> Brandon Nhep: Portfolio </title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+        <!-- external styling -->
+        <link href="css/styles.css" rel="stylesheet">
+          <!-- <style>
+                body {
+                        background-color:#000066 !important;
+                }
+          </style> -->
+    </head>
+
+    <body>
+
+        <!-- semantic section as a header -->
+        <header>
+            <!-- h1 - h6. headings smaller as the number gets higher -->
+            <h1> Brandon Nhep </h1>
+
+        </header>
+
+        <!-- line -->
+        <hr> 
+
+        <!-- semantic section as navigation menu -->
+        <nav>
+
+            <!-- hyperlinks to html files -->
+            <a href="index.html" class="current">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+        <br><br>
+        <!-- semantic section for main content -->
+        <main>
+            
+            <!-- semantic section for image -->
+            <figure>
+                <!-- display an image no closing tags, two attributes src, alt -->
+                <img src="img/IMG_8651 (Small).jpeg" alt="My Picture" class="welcome_photo">
+                <figcaption>
+                    <!-- em = emphasized text in italics-->
+                    <em>"With ordinary talent and extraodinary perserverance, all things are attainable"</em>
+
+                    <br>
+                    - Thomas F. Buxton
+                </figcaption>
+            </figure>
+            
+            <!-- container within document -->
+            <div class="welcome_text">
+                <!-- br = is line break(carriage-return) -->
+                <br>
+                Hello! 
+                <br/>
+                <!-- p = defines a paragraph -->
+                <p> Thank you for visiting my professional portfolio website.</p>
+                My name is Brandon Nhep and I am a CSUMB Computer Science student pursuing a career in Software Engineering.
+
+                <p> Currently studying remotely from Los Angeles County. Previously worked in Data Analysis for an insurance company and as a Librarian at UCI.</p>
+                <p> Feel free to contact me!</p>
+
+            </div>
+
+            <div class="welcome_text">
+                <header><h3>Goals</h3></header>
+                <p>A growing passion in creating technological solutions for the Health Care Industry. 
+                Goals within the program at CSUMB will include gaining proficiency in a multitude of programming languages,
+                understanding the process in which software is developed in adept professional settings, and working towards collaboration among similar individuals.
+                </p>
+            </div>
+
+            <div class="welcome_text">
+                <header><h3>Outcomes</h3></header>
+                <p>The computer science program at CSUMB will enrich skills in software design and development.
+                Providing a strong foundation in technical knowledge, hands-on experience through a professional environment, 
+                strong collaboration skills, and preparation upon graduation for a career in Software Engineering.
+                </p>
+            </div>
+
+        </main>
+
+        <!-- semantic section for footer -->
+        <footer>
+
+            <hr>
+
+            <figure>
+                <img src="img/logo (Small) (Phone).png" alt="Logo of CSUMB" class="footer_logo">
+            </figure>
+
+            CST336 Internet Programming. 2025&copy; Nhep <br>
+            <strong>Disclaimer:</strong> The information in this webpage is fictitious. <br>
+
+        </footer>
+        
+    </body>
+
 </html>
