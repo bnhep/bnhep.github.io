@@ -22,20 +22,20 @@ nav a:hover { /*hover to select elements */
     transition: .9s; /*transistion effect*/
 }
 
-main {
+main { /*Selector for main*/
     display: flex;
     justify-content: center;
     padding: 20px;
 }
 
-footer {
+footer { /*Selector for <footer>*/
     text-align: center;
     font-size: 0.75em;
     color: #707562;
     padding: 25px;
 }
 
-nav a.current {
+nav a.current { /* Selector targeting anchor <a> */
     color: #ebaf61;
     font-weight: bolder;
     font-size: 2.2em;
@@ -77,6 +77,10 @@ ul {
 .hobby {
     font-weight: bolder;
     color: #ebaf61;
+}
+
+.list-title {
+    list-style: none;
 }
 
 #content {
