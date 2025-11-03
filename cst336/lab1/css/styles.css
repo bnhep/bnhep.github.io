@@ -3,7 +3,7 @@ body { /*selector for body section*/
     color:black;
 }
 
-header, main, nav, footer, #content { /*selector to these elements changing alignment */
+header, main, nav, footer, #content, #form-container { /*selector to these elements changing alignment */
     text-align: center;
 }
 
@@ -80,6 +80,7 @@ ul {
 }
 
 #content {
+    display: flex;
     border-radius: 10px;    
 }
 
@@ -138,9 +139,13 @@ figcaption {
 .google-form-style {
     background-color: #ebaf61;
     width: 640px;
-    height: 958px; 
+    height: 1100px; 
     border: none; 
     margin: 0; 
     padding: 0;
     border-radius: 10px;
+}
+
+#form-container {
+    border-radius: 10px; 
 }
