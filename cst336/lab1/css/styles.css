@@ -43,8 +43,10 @@ nav a.current {
 
 table {
     margin: 0px auto;
-    padding-top: 10px;
-    padding-bottom: 20px;
+    border: 3px solid black;
+    border-radius: 6px;
+    border-spacing: 0.5;
+    background-color: #000000;
 }
 
 td {
@@ -75,6 +77,10 @@ ul {
 .hobby {
     font-weight: bolder;
     color: #ebaf61;
+}
+
+#content {
+    border-radius: 10px;    
 }
 
 .welcome_text {
@@ -114,7 +120,7 @@ h1 {
   font-family: "Alegreya", serif;
   font-optical-sizing: auto;
   font-weight: 550;
-  font-style: normal;
+  font-style: italic;
 }
 
 h3 {
