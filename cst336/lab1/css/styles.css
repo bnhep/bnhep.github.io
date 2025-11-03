@@ -41,7 +41,7 @@ nav a.current { /* Selector targeting anchor <a> */
     font-size: 2.2em;
 }
 
-table {
+table { /* Selector for table */
     margin: 0px auto;
     border: 2px solid black;
     border-radius: 6px;
@@ -49,24 +49,24 @@ table {
     background-color: #000000;
 }
 
-td {
+td { /* Selector for table data */
     padding-right: 10px;
     font-size: 1.3em;
 }
 
-td strong {
+td strong { /* Selector for table data <strong> */
     color: #ebaf61;
 }
 
-#table-header {
+#table-header { /* ID Selector for table header id */
     background-color: #be5959;
 }
 
-.table-row {
+.table-row { /* Class Selector for table row */
     background-color: aquamarine;
 }
 
-ul {
+ul { /* Selector for unordered list */
     width: 500px;
     margin: 0 auto;
     text-align: left;
@@ -74,21 +74,21 @@ ul {
     padding-bottom: 10px;
 }
 
-.hobby {
+.hobby { /* Class Selector for hobby class to highlight specific words */
     font-weight: bolder;
     color: #ebaf61;
 }
 
-.list-title {
+.list-title { /* Class Selector for list-title, removes bullet point for the list's title */
     list-style: none;
 }
 
-#content {
+#content { /* ID Selector for content ID*/
     display: flex;
     border-radius: 10px;    
 }
 
-.welcome_text {
+.welcome_text { /* Class Selector for welcome text boxes in home page*/
     margin: 5px;
     text-align: left;
     width: 220px;
@@ -97,50 +97,49 @@ ul {
     border: 2px solid black;
     border-radius: 10px;
     white-space: normal;
-    overflow: auto;
+    overflow: auto; /* allows a scrolling wheel for text overflow*/
 }
 
-.welcome_photo {
+.welcome_photo { /* Class Selector for welcome picture in home page*/
     height: 450px;
     border: 2px solid rgba(0, 0, 0, 0);
     border-radius: 10px;
 }
 
-.footer_logo {
+.footer_logo { /* Class Selector for footer logo image*/
     padding: 5px;
     margin: 0 auto;    
     width: 300px;
     height: auto;
 }
 
-
-body {
+body { /* Selector for <body>*/
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 350;
     font-style: normal;
 }
 
-h1 {
+h1 { /* Selector for heading 1, changes font*/
     font-family: "Alegreya", serif;
     font-optical-sizing: auto;
     font-weight: 550;
     font-style: italic;
 }
 
-h3 {
+h3 { /* Selector for heading 3, changes font*/
     font-family: "Alegreya", serif;
     font-optical-sizing: auto;
     font-weight: 650;
     font-style: normal;
 }
 
-figcaption {
+figcaption { /* Selector for caption beneath welcome photo*/
     margin: 0 auto;
     width: 450px;  
 }
 
-.google-form-style {
+.google-form-style { /* Class Selector for google form in contact*/
     background-color: #ebaf61;
     width: 640px;
     height: 1100px; 
@@ -150,6 +149,6 @@ figcaption {
     border-radius: 10px;
 }
 
-#form-container {
+#form-container {  /* ID Selector for google form <div> in contact*/
     border-radius: 10px; 
 }
