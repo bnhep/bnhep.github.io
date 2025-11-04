@@ -1,0 +1,197 @@
+
+
+/********************** Selectors for Body **********************/
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    text-align: left;
+}
+
+.content-main1 {
+    padding: 20px;
+}
+
+.content-main2 {
+    width: 650px;
+}
+
+.content-main3 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: space-evenly;
+    text-align: center;
+}
+
+.content-main4 {
+    padding: 12px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: space-between;
+    text-align: left;
+}
+
+nav a.current { /* Selector targeting anchor <a> */
+    color: #ebaf61;
+    font-weight: bolder;
+    font-size: 1.2em;
+    border: 2px #ebaf61 solid;
+}
+
+nav a { /*links within "nav" container */
+    padding: 6px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: light;
+    text-decoration: none; 
+    color: black;  
+}
+
+nav a:hover { /*hover to select elements */
+    text-decoration: none;
+    color: #ebaf61;
+    border: 2px solid #ebaf61;
+}
+
+body { /*selector for body section*/
+    background-color: #fdfbd4;
+    color:black;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+  text-align: center;
+}
+
+h2, h4 {
+    text-align: center;
+}
+
+main, header, footer, nav { /*selector to these elements changing alignment */
+    text-align: center;
+}
+
+.image-style {
+    width: 670px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.page-images {
+    height: 400px;
+    width: 500px;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.5);
+}
+
+figcaption a {
+    text-decoration: none;
+    color: #2e8797;
+}
+
+article, h3 {
+    text-align: left;
+}
+
+.paragraph-adjust {
+    width: 75%;
+    text-align: left;
+}
+
+
+
+/********************** Selectors for footer **********************/
+
+.footer_logo { /* Class Selector for footer logo image*/
+    padding: 5px;
+    margin: 0 auto;    
+    width: 300px;
+    height: auto;
+}
+
+footer { /*Selector for <footer>*/
+    text-align: center;
+    font-size: 0.75em;
+    color: #707562;
+    padding: 25px;
+}
+
+/********************** Selectors for table and lists **********************/
+table { /* Selector for table */
+    width: 900px;
+    margin: 0px auto;
+    border: 2px solid #dddddd;
+    border-radius: 6px;
+    border-spacing: 0.1em;
+    background-color: #f9f9f9;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.5);
+}
+
+td { /* Selector for table data */
+    padding-right: 10px;
+    font-size: 1.0em;
+}
+
+td strong { /* Selector for table data <strong> */
+    color: #ebaf61;
+}
+
+#table-header { /* ID Selector for table header id */
+    background-color: #f4f4f4;
+}
+
+.table-row { /* Class Selector for table row */
+    background-color: #ffffff;
+}
+
+ul { /* Selector for unordered list */
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.list-title { /* Class Selector for list-title, removes bullet point for the list's title */
+    list-style: none;
+    font-size: 1.2em;
+}
+
+.applications { /* Class Selector for hobby class to highlight specific words */
+    font-weight: bolder;
+    font-size: 1.2em;
+    color: #ebaf61;
+}
