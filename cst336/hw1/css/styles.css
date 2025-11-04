@@ -38,13 +38,13 @@ main {
 }
 
 .content-main4 {
-    padding: 12px;
+    padding: 20px;
     display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     align-content: space-between;
-    text-align: left;
+    text-align: center;
 }
 
 nav a.current { /* Selector targeting anchor <a> */
@@ -138,6 +138,10 @@ article, h3 {
     flex-wrap: wrap;
     justify-content: center;
     align-content: space-around;
+}
+
+iframe {
+    padding: 20px;
 }
 
 
