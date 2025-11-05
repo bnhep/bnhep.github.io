@@ -48,30 +48,30 @@ main {
 }
 
 nav a.current { /* Selector targeting anchor nav <a> current*/
-    color: #ebaf61;
+    color: #664c36;
     font-weight: bolder;
     font-size: 1.2em;
-    border: 2px #ebaf61 solid;
+    border: 2px #6f4e37 solid;
 }
 
 nav a { /*links within "nav" container */
     padding: 6px;
-    border: 1px solid black;
+    border: 1px solid #6f4e37;
     border-radius: 10px;
     font-size: 1.2em;
     font-weight: light;
     text-decoration: none; 
-    color: black;  
+    color: #d47e30;  
 }
 
 nav a:hover { /*hover to select elements */
     text-decoration: none;
-    color: #ebaf61;
-    border: 2px solid #ebaf61;
+    color: #664c36;
+    border: 2px solid #6f4e37;
 }
 
 body { /*selector for body section*/
-    background-color: #fdfbd4;
+    background-color: #f5f5dc;
     color:black;
 }
 
@@ -117,9 +117,9 @@ main, header, footer, nav { /*selector to these elements changing alignment */
     box-shadow: 8px 8px 10px #00000080;
 }
 
-figcaption a, .paragraph-adjust a {
+figcaption a, .paragraph-adjust a, li a, article a {
     text-decoration: none;
-    color: #2e8797;
+    color: #d47e30;
 }
 
 article, h3 {
@@ -179,7 +179,7 @@ td { /* Selector for table data */
 }
 
 td strong { /* Selector for table data <strong> */
-    color: #ebaf61;
+    color: #ad9c8e;
 }
 
 #table-header { /* ID Selector for table header id */
@@ -206,5 +206,5 @@ ul { /* Selector for unordered list */
 .applications { /* Class Selector for hobby class to highlight specific words */
     font-weight: bolder;
     font-size: 1.2em;
-    color: #ebaf61;
+    color: #6f4e37;
 }
