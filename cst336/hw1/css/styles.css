@@ -1,4 +1,8 @@
-
+/**********************
+    Brandon Nhep
+    CST 336 HW1
+    11-4-2025 
+**********************/
 
 /********************** Selectors for Body **********************/
 
@@ -12,10 +16,10 @@ main {
 
 .content {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: column; /* new css property */
+    flex-wrap: wrap; /* new css property */
     justify-content: center;
-    align-items: stretch;
+    align-items: stretch; /* new css property */
     text-align: left;
 }
 
@@ -57,7 +61,7 @@ nav a.current { /* Selector targeting anchor nav <a> current*/
 nav a { /*links within "nav" container */
     padding: 6px;
     border: 1px solid #6f4e37;
-    border-radius: 10px;
+    border-radius: 10px; /* new css property */
     font-size: 1.2em;
     font-weight: light;
     text-decoration: none; 
@@ -103,7 +107,7 @@ main, header, footer, nav { /*selector to these elements changing alignment */
     object-fit: cover;
     display: block;
     border-radius: 12px;
-    box-shadow: 8px 8px 10px #00000080;
+    box-shadow: 8px 8px 10px #00000080; /* new css property */
     text-align: center;
 }
 
