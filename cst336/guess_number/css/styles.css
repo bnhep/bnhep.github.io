@@ -144,3 +144,7 @@ header {
   font-weight: 700;
   font-style: normal;
 }
+
+label.menuLabel {
+    font-size: larger;
+}
