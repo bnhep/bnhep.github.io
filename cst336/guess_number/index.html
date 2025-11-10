@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Guess a Number </title>
+        <meta charset="utf-8">
+        <!-- external styling -->
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1>Guess the Number!</h1>
+            <h2>Guess a number between 1 and 99 in seven attempts!</h2>
+        </header>
+        <br>
+        <main>
+        <section>
+        <div id="main">
+            <label for="playerGuess" class="menuLabel">
+                Enter a guess!
+            </label>
+
+                <section class="mainGame">
+                    <input type="number" id="playerGuess" size="12" min="1" max="99">         
+                    <button id="guessBtn"> Guess </button> 
+                    <button id="resetBtn"> Reset </button> <br>
+                    <div id="feedback"></div>
+                </section>
+          </div>
+        </section>
+
+        <section>
+        <div id="currentStats">
+            <div class="innerDiv">
+                <h4>Attempts Remaining:</h4>
+                <span id = "attemptStat"></span><hr>
+                <section class="userGuesses">
+                    <div class="prevGuess">
+                        Previous Guesses: <br>
+                    <span id="guesses"></span>
+                </section>
+            </div>
+            <div class="innerDiv">
+                <h4>Wins:</h4>
+                <span id = "winStat"></span><br>
+                <hr>
+                <h4>Losses:</h4>
+                <span id = "lossStat"></span>
+            </div>
+        </div>    
+        </section>
+        </main>
+        <footer>
+            <hr>    
+            <figure>
+                <a href="https://csumb.edu/"><img src="img/footer_logo.png" alt="Logo of CSUMB" class="footer_logo"></a>
+            </figure>
+
+            CST336 Internet Programming. 2025&copy; Nhep <br>
+            <strong>Disclaimer:</strong> This website is for academic purposes.
+        </footer>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
