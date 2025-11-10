@@ -19,6 +19,9 @@ function initializeGame() {
     attempts = 0;
     console.log("Wins: " + wins);
     console.log("Losses: " + losses);
+
+    let userInput = document.querySelector("#playerGuess");
+    userInput.disabled = false;
     //hiding the Reset button
     document.querySelector("#resetBtn").style.display = "none";
 
@@ -42,16 +45,20 @@ function initializeGame() {
     let lossStat = document.querySelector("#lossStat");
 
     attemptStat.style.color = "green";
+    attemptStat.style.fontWeight = "bold";
     attemptStat.textContent = maxAttempts;
     winStat.style.color = "green";
+    winStat.style.fontWeight = "bold";
     winStat.textContent = wins;
     lossStat.style.color = "red";
+    lossStat.style.fontWeight = "bold";
     lossStat.textContent = losses;
 
 }
 
 function checkGuess() {
     let feedback = document.querySelector("#feedback");
+    let prevGuesses = document.querySelector("#guesses")
     feedback.textContent = "";
     let guess = document.querySelector("#playerGuess").value;
     console.log("Player Guess: " + guess);
@@ -66,7 +73,7 @@ function checkGuess() {
     // Display the remaining attempts
     document.querySelector("#attemptStat").textContent = maxAttempts - attempts;
     console.log("Attempts:" + attempts);
-    feedback.style.color = "orange";
+    feedback.style.color = "#CC5500";
     if (guess == randomNumber) {
         feedback.textContent = "Congratulations! You guessed it right. You Win!";
         feedback.style.color = "darkgreen"
@@ -76,6 +83,8 @@ function checkGuess() {
         gameOver();
     } else {
         // Fixed the guess display to give them commas in between
+        prevGuesses.style.color = "red";
+        prevGuesses.style.fontWeight = "bold";
         if (attempts === 1){
             document.querySelector("#guesses").textContent += guess;
         }else {
@@ -103,8 +112,10 @@ function checkGuess() {
 function gameOver() {
     let guessBtn = document.querySelector("#guessBtn");
     let resetBtn = document.querySelector("#resetBtn");
+    let userInput = document.querySelector("#playerGuess");
     guessBtn.style.display = "none"; //hides Guess button
     resetBtn.style.display = "inline"; //display reset button
+    userInput.disabled = true;
 }
 
 function validateInput(playerInput) {

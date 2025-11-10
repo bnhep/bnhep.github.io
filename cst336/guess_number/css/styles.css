@@ -1,25 +1,52 @@
+:root {
+    --header: #6ed6e4;
+    --boxbg: #6ed6e4;
+    --border-clr: #673AB7;
+    --shadow-clr: #7C4DFF;
+    --header-font: #F5F5DC;
+    --btn-hover: #E0E0C4;
+    --font-border: #FF4081;
+}
+
+
 * { 
     box-sizing: border-box; 
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+body {
     background-color: #fffaf0;
     margin: 0;
     padding: 0;
+    background-image: url("../img/numbers_img.jpg");
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
 }
 
-header, footer, main, #main {
+header, footer, main {
     padding: 10px;
     text-align: center;
     margin: 0 auto;
-    width: 720px;
+    width: 780px;
 }
 
 header {
-    background-color: #f4a460;
-    border: 2px black solid;
+    color: var(--header-font);
+    text-shadow: 2px 2px 5px var(--shadow-clr);
+    padding: 24px;
+    background-color: var(--header);
+    border: 2px var(--border-clr) solid;
     border-radius: 10px;
+    box-shadow: 6px 6px 10px var(--shadow-clr);
     box-shadow: 8px 8px 10px #00000080;
 }
 
@@ -52,24 +79,25 @@ footer {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .innerDiv {
+    color: var(--header-font);
+    text-shadow: 2px 2px 5px var(--shadow-clr);
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 45%;
-    border: 2px solid black;
+    border: 2px solid var(--border-clr);
     border-radius: 10px;
-    box-shadow: 6px 6px 10px #00000040;
+    box-shadow: 6px 6px 10px var(--shadow-clr);
     font-size: large;
     padding: 20px;
-    background-color: #fffaf0;
+    background-color: #6ed6e4;
 }
 
 .prevGuess {
-    margin-top: 10px;
     font-size: 1.1em;
-    padding: 5px;
     font-size: large;
 }
 
@@ -84,17 +112,21 @@ footer {
     font-size: 1em;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid #333;
-    background-color: #f4a460;
-    color: #000;
+    border: 2px solid black;
+    background-color: var(--header-font);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    color: black;
 }
 
 #guessBtn:hover, #resetBtn:hover {
-    background-color: #e59440;
+    background-color: var(--btn-hover);
+    border-radius: 10px;
+
 }
 
-#feedback {
-
+#feedback, label.menuLabel {
+    text-shadow: 2px 2px 5px var(--shadow-clr);
     font-weight: bold;
 }
 
@@ -105,4 +137,11 @@ h1, h2 {
 #playerGuess {
     height: 35px;
     width: 100px;
+    border-radius: 10px;
+}
+
+header {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-style: normal;
 }
