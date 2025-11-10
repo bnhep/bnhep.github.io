@@ -39,11 +39,11 @@ function initializeGame() {
     document.querySelector("#guesses").textContent = "";
 
     //show attempts, wins and loss
-    
     let attemptStat = document.querySelector("#attemptStat");
     let winStat = document.querySelector("#winStat");
     let lossStat = document.querySelector("#lossStat");
 
+    //Change the styles of inner <span>
     attemptStat.style.color = "green";
     attemptStat.style.fontWeight = "bold";
     attemptStat.textContent = maxAttempts;
@@ -123,16 +123,21 @@ function validateInput(playerInput) {
     feedback.textContent = "";
     let guess = Number(playerInput);
 
+    //Checks if its not a number
     if (isNaN(guess)){
         feedback.textContent = "Enter a number between 1 and 99";
         feedback.style.color = "red";
         return null;
     }
+    
+    //Checks if number is less that one or greater than 99
     if (guess < 1 || guess > 99){
         feedback.textContent = "Enter a number between 1 and 99";
         feedback.style.color = "red";
         return null;
     }
+
+    //Double checks if the number is a whole number, no floats,decimals
     if (!Number.isInteger(guess)){
         feedback.textContent = "Enter a number a whole number.";
         feedback.style.color = "red";
