@@ -1,0 +1,13 @@
+.footer_logo { /* Class Selector for footer logo image*/
+    padding: 5px;
+    margin: 0 auto;    
+    width: 300px;
+    height: auto;
+}
+
+footer { /*Selector for <footer>*/
+    text-align: center;
+    font-size: 0.75em;
+    color: #707562;
+    padding: 25px;
+}
