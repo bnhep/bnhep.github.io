@@ -68,11 +68,25 @@ footer { /*Selector for <footer>*/
 }
 
 .bubble-box {
-  border-radius: 20px;
-  background-color: #f8f9fa;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+    border-radius: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
+.container-md {
+    max-width: 40%;
+    border-radius: 10px;
+}
+
+
+.custom-bubble {
+    border-radius: 10px;         
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+    padding: 2rem;               
+    margin-bottom: 2rem;        
+    background-color: #fdfdfd;  
+    border: 2px solid #ccc;     
+}
 
