@@ -32,6 +32,7 @@ function displayQ4Choices() {
     }
 }//displayQ4Choices
 
+//Validates whether or not the question has been answered or not
 function isFormValid() {
     let isValid = true;
     let feedback = document.querySelector("#validationFdbk");
@@ -113,6 +114,7 @@ function isFormValid() {
     return isValid;
 }//isFormValid
 
+//Checks if answer is right then change context
 function rightAnswer(index) {
     document.querySelector(`#q${index}Feedback`).innerHTML = "Correct!";
     document.querySelector(`#q${index}Feedback`).className = "bg-success text-white";
@@ -120,6 +122,7 @@ function rightAnswer(index) {
     score += 10
 }//rightAnswer
 
+//Checks if answer is wrong then change context
 function wrongAnswer(index) {
     document.querySelector(`#q${index}Feedback`).innerHTML = "Incorrect!";
     document.querySelector(`#q${index}Feedback`).className = "bg-warning text-white";
@@ -129,6 +132,8 @@ function wrongAnswer(index) {
 /*
     Functions for Question 5
 */
+
+//Toggles the button so that if user enters 3 choices it locks answers, can unlock
 function toggleLockQ5() {
     let q5Select = document.querySelector("#q5");
     let note = document.querySelector("#q5Note");
@@ -165,6 +170,7 @@ function toggleLockQ5() {
     console.log(q5Answers);
 }//toggleLock()
 
+//Checks if answers are correct
 function q5Checker () {
     let correctAnswers = ["Nebraska", "Missouri", "Wyoming"];
     let count = 0;
@@ -177,6 +183,7 @@ function q5Checker () {
     return count;
 }
 
+//Randomizes the list for question 5
 function displayQ5Choices() {
     let q5ChoicesArray = ["Alaska", "Washington", "Idaho", "Nebraska",
             "Minnesota", "Missouri", "Michigan", "New York", "Wyoming", "Vermont", "Maine"];
@@ -186,7 +193,8 @@ function displayQ5Choices() {
     }
 }
 
-// Function for Question 6
+//Function for Question 6
+//Displays the range bar
 function displayRange () {
     let rangeInput = document.querySelector("#rangeLakes");
     let rangeDisplay = document.querySelector("#lakeCountDisplay");
@@ -194,6 +202,7 @@ function displayRange () {
     rangeDisplay.value = rangeInput.value;
 }
 
+//Updates the text box and matches it with range bar and vice versa
 function updateRange(){
     let rangeInput = document.querySelector("#rangeLakes");
     let rangeDisplay = document.querySelector("#lakeCountDisplay");
@@ -211,6 +220,7 @@ function updateRange(){
 
 
 // Fucntion for Question 8
+// Grades question 8
 function gradeQ8 () {
     let q8response1 = document.querySelector("#q8first").value;
     let q8response2 = document.querySelector("#q8second").value;
@@ -237,6 +247,7 @@ function gradeQ8 () {
     return correctCount;
 }
 
+//If question 8 is incorrect show a message next to the selector box
 function wrongAnswerQ8(index) {
     let textSpan = document.querySelector(`#q8check${index}`);
     if (textSpan) {
@@ -245,6 +256,7 @@ function wrongAnswerQ8(index) {
     }
 }//rightAnswer for Question 8
 
+//If question 8 is correct show a message next to the selector box
 function rightAnswerQ8(index) {
     let textSpan = document.querySelector(`#q8check${index}`);
     if (textSpan) {
@@ -255,12 +267,14 @@ function rightAnswerQ8(index) {
 
 
 //Question 9 functions
+//Creates event listener for each images in carousel
 function addImageListenerQ9() {
     for (let i = 0; i < carouselImg.length; i++) {
         carouselImg[i].addEventListener("click", clickableImage);
     }
 }//addImageListerner
 
+//Makes the images clickable and stores the value for grading.
 function clickableImage(event) {
     for (let i = 0; i < carouselImg.length; i++) {
         carouselImg[i].style.border = "none";
@@ -274,6 +288,7 @@ function clickableImage(event) {
 }//clickableImage
 
 //function for Question 10
+//Validates the number entered making sure there is NaN, null, whole number, and integer.
 function q10Enter() {
     let answer = document.querySelector("#q10").value;
     let feedback = document.querySelector("#q10Feedback");
@@ -303,6 +318,7 @@ function q10Enter() {
     feedback.innerHTML = `You have chosen ${answer}`;
 }
 
+//Main Grading logic
 function gradeQuiz() {
     console.log("Grading quiz...");
     document.querySelector("#validationFdbk").innerHTML = "";
@@ -439,7 +455,7 @@ function gradeQuiz() {
 
 }//gradeQuiz
 
-//Reset everything
+//Reset everything so that the page is brand new
 function redoQuiz() {
     score = 0;
     locked = false;
@@ -532,6 +548,7 @@ function redoQuiz() {
     }
 }
 
+//Changes border for correct answer
 function borderCorrect(questionID) {
     let box = document.querySelector(`#q${questionID}Box`);
     box.classList.remove("border-success", "border-danger");
@@ -539,6 +556,7 @@ function borderCorrect(questionID) {
     box.classList.add("border-success");
 }
 
+//Changes border for wrong answer
 function borderWrong(questionID) {
     let box = document.querySelector(`#q${questionID}Box`);
     box.classList.remove("border-success", "border-danger");
