@@ -16,3 +16,11 @@ footer { /*Selector for <footer>*/
     width: 320px;
     height: 24px;
 }
+
+.carousel-item img {
+  width: 80%;         /* or a fixed width like 400px */
+  max-width: 100%;     /* ensures it doesn’t overflow */
+  height: auto;
+  object-fit: cover;
+}
+
