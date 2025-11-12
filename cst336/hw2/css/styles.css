@@ -11,3 +11,8 @@ footer { /*Selector for <footer>*/
     color: #707562;
     padding: 25px;
 }
+
+#rangeLakes {
+    width: 320px;
+    height: 24px;
+}
