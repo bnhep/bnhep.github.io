@@ -1,10 +1,8 @@
 //Event Listeners
 document.querySelector("button").addEventListener("click", gradeQuiz);
 document.querySelector("#q5Lock").addEventListener("click", toggleLockQ5);
-
 //updates the input range with the bar
 document.querySelector("#rangeLakes").addEventListener("input", displayRange);
-
 //updates the input range with the textbox
 document.querySelector("#lakeCountDisplay").addEventListener("input", updateRange);
 
@@ -13,13 +11,36 @@ var score = 0;
 var attempts = localStorage.getItem("total_attempts");
 var locked = false;
 let q5Answers = [];
+let carouselImg = document.querySelectorAll(".carousel-item img");
+let selectImg = null;
 
 //Call functions to randomize choices
 displayQ4Choices();
 displayQ5Choices();
+addImageListenerQ9();
 
 
 //functions
+function addImageListenerQ9() {
+    for (let i = 0; i < carouselImg.length; i++) {
+        carouselImg[i].addEventListener("click", clickableImage);
+    }
+}
+
+function clickableImage (event) {
+    for (let i = 0; i < carouselImg.length; i++) {
+        carouselImg[i].style.border = "none";
+        carouselImg[i].style.boxShadow = "none";
+    }
+    let img = event.target;
+    img.style.border = "5px solid green";
+    img.style.outlineOffset = "-5px";
+    img.style.boxShadow = "0 0 10px lime";
+    selectImg = img.parentElement.id;
+}
+
+
+
 function displayQ4Choices() {
     let q4ChoicesArray = ["Maine", "Rhode Island", "Maryland", "Delaware"];
     q4ChoicesArray = _.shuffle(q4ChoicesArray);
@@ -259,6 +280,13 @@ function gradeQuiz() {
         rightAnswer(8);
     } else {
         wrongAnswer(8);
+    }
+    
+    // Grading Question 9
+    if (selectImg === "whitney") {
+        rightAnswer(9);
+    } else {
+        wrongAnswer(9);
     }
     document.querySelector("#totalScore").innerHTML = `Total Score: ${score}`;
     document.querySelector("#totalAttempts").innerHTML = `Total Attempts: ${++attempts}`;
