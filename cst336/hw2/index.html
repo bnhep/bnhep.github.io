@@ -11,12 +11,12 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
     <body class="text-center">
-        <h1 class="p-5 bg-info">US Geography Quiz</h1>
+        <h1 class="p-5 text-black header-gradient">US Geography Quiz</h1>
 
 
 <div class="container-md">
         <!-- First Question -->
-    <div id="q1Box" class="custom-bubble rounded shadow p-4 mb-4 bg-light border">
+    <div id="q1Box" class="rounded shadow p-4 mb-4 gradient-bg border">
         <h3><span id="markImg1"></span>1. What is the capital of California?</h3>
         <input type="text" id="q1">
         <br><br>
@@ -25,7 +25,7 @@
     </div>
 
         <!-- Second Question -->
-    <div id="q2Box" class="rounded shadow p-4 mb-4 bg-light border">
+    <div id="q2Box" class="rounded shadow p-4 mb-4 gradient-bg border">
 
         <h3><span id="markImg2"></span>2. What is the longest river?</h3>
         <select id="q2">
@@ -41,7 +41,7 @@
     </div>  
 
         <!-- Third Question  -->
-    <div id="q3Box" class="rounded shadow p-4 mb-4 bg-light border">
+    <div id="q3Box" class="rounded shadow p-4 mb-4 gradient-bg border">
         <h3><span id="markImg3"></span>3. What presidents are carved into mount Rushmore?</h3>
             <input type="checkbox" id="Jackson"> <label for="Jackson"> A.Jackson </label>
             <input type="checkbox" id="Franklin"> <label for="Franklin"> B.Franklin </label>
@@ -53,7 +53,7 @@
     </div>
 
         <!-- Fourth Question -->
-    <div id="q4Box" class="rounded shadow p-4 mb-4 bg-light border">
+    <div id="q4Box" class="rounded shadow p-4 mb-4 gradient-bg border">
         <h3><span id="markImg4"></span>4. What is the smallest US State?</h3>
             <div id="q4Choices"></div>
         <br><br>
@@ -62,13 +62,13 @@
     </div>
 
         <!-- Fifth Question -->
-    <div id="q5Box" class="rounded shadow p-4 mb-4 bg-light border">
+    <div id="q5Box" class="rounded shadow p-4 mb-4 gradient-bg border">
         <h3><span id="markImg5"></span>5. Select the three U.S. states that <span class="make-red">DO NOT</span> share a border with Canada:</h3>
         <label for="q5">Choose a State:</label>
         <select id="q5" name="q5" multiple size="7">
         </select>
             <h6>Hold down the Ctrl (windows) or Command (Mac) button to select multiple states.<br> Then lock in Answers.</h6>
-            <input id="q5Lock" class="btn btn-outline-primary" type="button" value="Lock it in">
+            <input id="q5Lock" class="btn btn-primary" type="button" value="Lock it in">
             <div id="q5Note"></div>
         <br><br>
          <div id="q5Feedback"></div>
@@ -76,7 +76,7 @@
     </div>
 
         <!-- Sixth Question -->
-    <div id="q6Box" class="rounded shadow p-4 mb-4 bg-light border">
+    <div id="q6Box" class="rounded shadow p-4 mb-4 gradient-bg border">
         <h3><span id="markImg6"></span>6. How many lakes are there in Minnesota? </h3>
             <label for="rangeLakes">Please choose the number of lakes (between 0 and 20000):</label>
             <input type="range" id="rangeLakes" name="rangeLakes" min="0" max="20000">
@@ -89,7 +89,7 @@
     </div>
 
         <!-- Seventh Question -->
-    <div id="q7Box" class="rounded shadow p-4 mb-4 bg-light border">
+    <div id="q7Box" class="rounded shadow p-4 mb-4 gradient-bg border">
         <h3><span id="markImg7"></span>7. True/False: Is California known as "The Sunshine State".</h3>
             <input type="radio" id="q7response" name="q7" value="True">
             <label for="q7response"> True</label>
@@ -101,7 +101,7 @@
     </div>  
 
         <!-- Eighth Question -->
-    <div id="q8Box" class="rounded shadow p-4 mb-4 bg-light border">
+    <div id="q8Box" class="rounded shadow p-4 mb-4 gradient-bg border">
         <h3><span id="markImg8"></span>8. Match the statepark to its State.</h3>
         <div class="question8">
             <label id="questionOpt" for="q8first">Redwood National and State Parks:</label>
@@ -146,7 +146,7 @@
     </div>  
 
         <!-- Ninth Question Utilized bootstrap carousel -->
-    <div id="q9Box" class="rounded shadow p-4 mb-4 bg-light border">
+    <div id="q9Box" class="rounded shadow p-4 mb-4 gradient-bg border">
         <h3><span id="markImg9"></span>9. Which of these is Mount Whitney, California?</h3>
         <div class="carousel-container" style="max-width: 450px; margin: auto;">
             <div id="carouselExampleIndicators" class="carousel slide">
@@ -189,7 +189,7 @@
     </div>
 
         <!-- Tenth Question -->
-    <div id="q10Box" class="rounded shadow p-4 mb-4 bg-light border">
+    <div id="q10Box" class="rounded shadow p-4 mb-4 gradient-bg border">
         <h3><span id="markImg10"></span>10. How many states are landlocked (no ocean coastline)?</h3>
         <label for="q10" class="q10Label">
             Enter a number:
@@ -206,7 +206,7 @@
         <h3 id="validationFdbk" class="bg-danger text-white "></h3>
 
         <!-- Submit Button -->
-        <button id="submitBtn" class="btn btn-outline-primary">Submit Quiz</button>
+        <button id="submitBtn" class="btn btn-primary">Submit Quiz</button>
         <button id="resetBtn" class="btn btn-outline-danger">Redo Quiz</button>
         <h3 id="gratsMsg"></h3>
         <br>

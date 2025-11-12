@@ -1,5 +1,4 @@
 
-
 .footer_logo { /* Class Selector for footer logo image*/
     padding: 5px;
     margin: 0 auto;    
@@ -82,7 +81,6 @@ footer { /*Selector for <footer>*/
     border-radius: 10px;
 }
 
-
 .custom-bubble {
     border-radius: 10px;         
     box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
@@ -97,5 +95,18 @@ footer { /*Selector for <footer>*/
 }
 
 .border-thick {
-  border-width: 4px !important; 
+    border-width: 4px !important; 
 }
+
+.gradient-bg {
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+}
+
+.header-gradient {
+    background-color: black;
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb); 
+    text-align: center;
+    border-radius: 0.5rem; 
+    color: black;
+}
+
