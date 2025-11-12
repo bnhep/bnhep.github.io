@@ -76,8 +76,13 @@ function isFormValid() {
     }
 
     //Question 6
-    let q6Answer = Number(document.querySelector("#lakeCountDisplay").value);
-    if (isNaN(q6Answer) || q6Answer < 0 || q6Answer > 20000 || !Number.isInteger(q6Answer)) {
+    let q6Input = document.querySelector("#lakeCountDisplay").value;
+    let q6Answer = Number(q6Input);
+
+    if (q6Input === "") {
+        feedback.innerHTML += "Question 6 was not answered.<br>";
+        isValid = false;
+    } else if (isNaN(q6Answer) || q6Answer < 0 || q6Answer > 20000 || !Number.isInteger(q6Answer)) {
         feedback.innerHTML += "Question 6 must have a valid lake count.<br>";
         isValid = false;
     }
