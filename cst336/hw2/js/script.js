@@ -1,11 +1,13 @@
 //Event Listeners
-document.querySelector("button").addEventListener("click", gradeQuiz);
+
+
 document.querySelector("#q5Lock").addEventListener("click", toggleLockQ5);
 //updates the input range with the bar
 document.querySelector("#rangeLakes").addEventListener("input", displayRange);
 //updates the input range with the textbox
 document.querySelector("#lakeCountDisplay").addEventListener("input", updateRange);
-
+document.querySelector("#q10Btn").addEventListener("click", q10Enter);
+document.querySelector("#submitBtn").addEventListener("click", gradeQuiz);
 //Global Variables
 var score = 0;
 var attempts = localStorage.getItem("total_attempts");
@@ -21,13 +23,42 @@ addImageListenerQ9();
 
 
 //functions
+function q10Enter() {
+    let answer = document.querySelector("#q10").value;
+    let feedback = document.querySelector("#q10Feedback");
+    answer = Number(answer);
+
+    //Checks if its not a number
+    if (isNaN(answer)){
+        feedback.textContent = "Enter a number between 1 and 100";
+        feedback.style.color = "red";
+        return null;
+    }
+    
+    //Checks if number is less that one or greater than 100
+    if (answer < 1 || answer > 99){
+        feedback.textContent = "Enter a number between 1 and 100";
+        feedback.style.color = "red";
+        return null;
+    }
+
+    //Double checks if the number is a whole number, no floats,decimals
+    if (!Number.isInteger(answer)){
+        feedback.textContent = "Enter a number a whole number.";
+        feedback.style.color = "red";
+        return null;
+    }
+    feedback.style.color = "Orange";
+    feedback.innerHTML = `You have chosen ${answer}`;
+}
+
 function addImageListenerQ9() {
     for (let i = 0; i < carouselImg.length; i++) {
         carouselImg[i].addEventListener("click", clickableImage);
     }
-}
+}//addImageListerner
 
-function clickableImage (event) {
+function clickableImage(event) {
     for (let i = 0; i < carouselImg.length; i++) {
         carouselImg[i].style.border = "none";
         carouselImg[i].style.boxShadow = "none";
@@ -37,9 +68,7 @@ function clickableImage (event) {
     img.style.outlineOffset = "-5px";
     img.style.boxShadow = "0 0 10px lime";
     selectImg = img.parentElement.id;
-}
-
-
+}//clickableImage
 
 function displayQ4Choices() {
     let q4ChoicesArray = ["Maine", "Rhode Island", "Maryland", "Delaware"];
@@ -48,7 +77,7 @@ function displayQ4Choices() {
         document.querySelector("#q4Choices").innerHTML += ` <input type="radio" name="q4" id="${q4ChoicesArray[i]}"
         value ="${q4ChoicesArray[i]}"> <label for="${q4ChoicesArray[i]}"> ${q4ChoicesArray[i]}</label>`;
     }
-}
+}//displayQ4Choices
 
 function isFormValid() {
     let isValid = true;
@@ -131,7 +160,6 @@ function displayQ5Choices() {
         document.querySelector("#q5").innerHTML += ` <option value="${q5ChoicesArray[i]}">${q5ChoicesArray[i]}</option>`;
     }
 }
-
 
 // Function for Question 6
 function displayRange () {
@@ -218,6 +246,8 @@ function gradeQuiz() {
     let q6Response1 = document.querySelector("#rangeLakes").value;
     let q6Response2 = document.querySelector("#lakeCountDisplay").value;
     let q7Response = document.querySelector("input[name=q7]:checked").value;
+    let q10Response = document.querySelector("#q10").value;
+
 
     console.log(q1Response);
     console.log(q2Response);
@@ -282,11 +312,18 @@ function gradeQuiz() {
         wrongAnswer(8);
     }
     
-    // Grading Question 9
+    //Grading Question 9
     if (selectImg === "whitney") {
         rightAnswer(9);
     } else {
         wrongAnswer(9);
+    }
+
+    //Grading Question 10
+    if (q10Response == 27) {
+        rightAnswer(10);
+    } else {
+        wrongAnswer(10);
     }
     document.querySelector("#totalScore").innerHTML = `Total Score: ${score}`;
     document.querySelector("#totalAttempts").innerHTML = `Total Attempts: ${++attempts}`;

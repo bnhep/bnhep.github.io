@@ -133,7 +133,7 @@
         <br><br>
 
 
-        <!-- Ninth Question -->
+        <!-- Ninth Question Utilized bootstrap carousel -->
         <h3><span id="markImg9"></span>9.Which of these is Mount Whitney, California?</h3>
         <div class="carousel-container" style="max-width: 450px; margin: auto;">
             <div id="carouselExampleIndicators" class="carousel slide">
@@ -176,6 +176,12 @@
 
 
         <!-- Tenth Question -->
+        <h3><span id="markImg10"></span>10. How many states are landlocked (no ocean coastline)?</h3>
+        <label for="q10" class="q10Label">
+            Enter a number:
+        </label>
+        <input type="number" id="q10" min="1" max="99">         
+        <button id="q10Btn"> Enter </button> 
         <br><br>
          <div id="q10Feedback"></div>
         <br><br>
@@ -185,7 +191,7 @@
         <h3 id="validationFdbk" class="bg-danger text-white"></h3>
 
         <!-- Submit Button -->
-        <button class="btn btn-outline-primary">Submit Quiz</button>
+        <button id="submitBtn" class="btn btn-outline-primary">Submit Quiz</button>
 
         <br>
         <h2 id="totalScore" class="text-info"></h2>
