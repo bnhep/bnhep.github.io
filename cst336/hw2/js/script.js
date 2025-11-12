@@ -416,11 +416,7 @@ function gradeQuiz() {
     submitButton.disabled = true;
     submitButton.add("btn-secondary");
 
-
-
-
 }//gradeQuiz
-
 
 //Reset everything
 function redoQuiz() {
