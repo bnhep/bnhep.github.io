@@ -23,35 +23,6 @@ addImageListenerQ9();
 
 
 //functions
-function q10Enter() {
-    let answer = document.querySelector("#q10").value;
-    let feedback = document.querySelector("#q10Feedback");
-    answer = Number(answer);
-
-    //Checks if its not a number
-    if (isNaN(answer)){
-        feedback.textContent = "Enter a number between 1 and 100";
-        feedback.style.color = "red";
-        return null;
-    }
-
-    //Checks if number is less that one or greater than 100
-    if (answer < 1 || answer > 99){
-        feedback.textContent = "Enter a number between 1 and 100";
-        feedback.style.color = "red";
-        return null;
-    }
-
-    //Double checks if the number is a whole number, no floats,decimals
-    if (!Number.isInteger(answer)){
-        feedback.textContent = "Enter a number a whole number.";
-        feedback.style.color = "red";
-        return null;
-    }
-    feedback.style.color = "Orange";
-    feedback.innerHTML = `You have chosen ${answer}`;
-}
-
 function displayQ4Choices() {
     let q4ChoicesArray = ["Maine", "Rhode Island", "Maryland", "Delaware"];
     q4ChoicesArray = _.shuffle(q4ChoicesArray);
@@ -128,7 +99,7 @@ function isFormValid() {
 
     //Question 9
     if (!selectImg) {
-        feedback.innerHTML += "Question 9 was not answered. No image selected<br>";
+        feedback.innerHTML += "Question 9 was not answered. No image selected.<br>";
         isValid = false;
     }
 
@@ -296,11 +267,41 @@ function clickableImage(event) {
         carouselImg[i].style.boxShadow = "none";
     }
     let img = event.target;
-    img.style.border = "5px solid green";
+    img.style.border = "5px solid #e9db5fff";
     img.style.outlineOffset = "-5px";
     img.style.boxShadow = "0 0 10px lime";
     selectImg = img.parentElement.id;
 }//clickableImage
+
+//function for Question 10
+function q10Enter() {
+    let answer = document.querySelector("#q10").value;
+    let feedback = document.querySelector("#q10Feedback");
+    answer = Number(answer);
+
+    //Checks if its not a number
+    if (isNaN(answer)){
+        feedback.textContent = "Enter a number between 1 and 100";
+        feedback.style.color = "red";
+        return null;
+    }
+
+    //Checks if number is less that one or greater than 100
+    if (answer < 1 || answer > 99){
+        feedback.textContent = "Enter a number between 1 and 100";
+        feedback.style.color = "red";
+        return null;
+    }
+
+    //Double checks if the number is a whole number, no floats,decimals
+    if (!Number.isInteger(answer)){
+        feedback.textContent = "Enter a number a whole number.";
+        feedback.style.color = "red";
+        return null;
+    }
+    feedback.style.color = "Orange";
+    feedback.innerHTML = `You have chosen ${answer}`;
+}
 
 function gradeQuiz() {
     console.log("Grading quiz...");
@@ -328,73 +329,93 @@ function gradeQuiz() {
     //Grading Question 1
     if (q1Response == "sacramento") {
         rightAnswer(1);
+        borderCorrect(1);
     } else {
         wrongAnswer(1);
+        borderWrong(1);
     }
 
     //Grading Question 2
     if (q2Response == "mo") {
         rightAnswer(2);
+        borderCorrect(2);
     } else {
         wrongAnswer(2);
+        borderWrong(2);
     }
 
     //Grading Question 3
     if (document.querySelector("#Jefferson").checked && document.querySelector("#Roosevelt").checked &&
         !document.querySelector("#Jackson").checked && !document.querySelector("#Franklin").checked) {
             rightAnswer(3);
+            borderCorrect(3);
         } else {
             wrongAnswer(3);
+            borderWrong(3);
         }
 
     //Grading Question 4
     if (q4Response == "Rhode Island") {
         rightAnswer(4);
+        borderCorrect(4);
     } else {
         wrongAnswer(4);
+        borderWrong(4);
     }
 
     //Grading Question 5
     let correctCount = q5Checker();
     if (correctCount === 3 && q5Answers.length === 3) {
         rightAnswer(5);
+        borderCorrect(5);
     } else {
         wrongAnswer(5);
+        borderWrong(5);
     }
 
     //Grading Question 6
     if (q6Response1 && q6Response2 == 11842) {
         rightAnswer(6);
+        borderCorrect(6);
     } else {
         wrongAnswer(6);
+        borderWrong(6);
     }
 
     //Grading Question 7
     if (q7Response == "False") {
         rightAnswer(7);
+        borderCorrect(7)
     } else {
         wrongAnswer(7);
+        borderWrong(7);
     }
 
     //Grading Question8
     if (gradeQ8() == 3) {
         rightAnswer(8);
+        borderCorrect(8);
     } else {
         wrongAnswer(8);
+        borderWrong(8);
     }
     
     //Grading Question 9
     if (selectImg === "whitney") {
         rightAnswer(9);
+        borderCorrect(9);
     } else {
         wrongAnswer(9);
+        borderWrong(9);
     }
 
     //Grading Question 10
     if (q10Response == 27) {
         rightAnswer(10);
+        borderCorrect(10);
     } else {
         wrongAnswer(10);
+        borderWrong(10);
     }
 
     let scoreDisplay = document.querySelector("#totalScore");
@@ -501,4 +522,26 @@ function redoQuiz() {
     let congratsMsg = document.querySelector("#gratsMsg");
     congratsMsg.innerHTML = "";
 
+    //reset borders
+    for (let i = 1; i <= 10; i++) {
+        let box = document.querySelector(`#q${i}Box`);
+        if(box) {
+            box.classList.remove("border-success", "border-danger");
+            box.classList.remove("border-thick");
+        }
+    }
+}
+
+function borderCorrect(questionID) {
+    let box = document.querySelector(`#q${questionID}Box`);
+    box.classList.remove("border-success", "border-danger");
+    box.classList.add("border-thick");
+    box.classList.add("border-success");
+}
+
+function borderWrong(questionID) {
+    let box = document.querySelector(`#q${questionID}Box`);
+    box.classList.remove("border-success", "border-danger");
+    box.classList.add("border-thick");
+    box.classList.add("border-danger");
 }
