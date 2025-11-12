@@ -534,7 +534,7 @@ function redoQuiz() {
     scoreDisplay.className = "text-info";
 
     console.log("Everything has been reset");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+
     document.querySelector("#totalAttempts").style.display = "none";
 
     let submitButton = document.querySelector("#submitBtn");
@@ -551,6 +551,7 @@ function redoQuiz() {
             box.classList.remove("border-thick");
         }
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 //Changes border for correct answer
