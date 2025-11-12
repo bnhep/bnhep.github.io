@@ -1,6 +1,4 @@
 //Event Listeners
-
-
 document.querySelector("#q5Lock").addEventListener("click", toggleLockQ5);
 //updates the input range with the bar
 document.querySelector("#rangeLakes").addEventListener("input", displayRange);
@@ -8,6 +6,8 @@ document.querySelector("#rangeLakes").addEventListener("input", displayRange);
 document.querySelector("#lakeCountDisplay").addEventListener("input", updateRange);
 document.querySelector("#q10Btn").addEventListener("click", q10Enter);
 document.querySelector("#submitBtn").addEventListener("click", gradeQuiz);
+document.querySelector("#resetBtn").addEventListener("click", redoQuiz);
+
 //Global Variables
 var score = 0;
 var attempts = localStorage.getItem("total_attempts");
@@ -34,7 +34,7 @@ function q10Enter() {
         feedback.style.color = "red";
         return null;
     }
-    
+
     //Checks if number is less that one or greater than 100
     if (answer < 1 || answer > 99){
         feedback.textContent = "Enter a number between 1 and 100";
@@ -52,24 +52,6 @@ function q10Enter() {
     feedback.innerHTML = `You have chosen ${answer}`;
 }
 
-function addImageListenerQ9() {
-    for (let i = 0; i < carouselImg.length; i++) {
-        carouselImg[i].addEventListener("click", clickableImage);
-    }
-}//addImageListerner
-
-function clickableImage(event) {
-    for (let i = 0; i < carouselImg.length; i++) {
-        carouselImg[i].style.border = "none";
-        carouselImg[i].style.boxShadow = "none";
-    }
-    let img = event.target;
-    img.style.border = "5px solid green";
-    img.style.outlineOffset = "-5px";
-    img.style.boxShadow = "0 0 10px lime";
-    selectImg = img.parentElement.id;
-}//clickableImage
-
 function displayQ4Choices() {
     let q4ChoicesArray = ["Maine", "Rhode Island", "Maryland", "Delaware"];
     q4ChoicesArray = _.shuffle(q4ChoicesArray);
@@ -81,10 +63,82 @@ function displayQ4Choices() {
 
 function isFormValid() {
     let isValid = true;
+    let feedback = document.querySelector("#validationFdbk");
+
+    //Question 1
     if (document.querySelector("#q1").value == "") {
         isValid = false;
-        document.querySelector("#validationFdbk").innerHTML = "Question 1 was not answered";
+        document.querySelector("#validationFdbk").innerHTML = "Question 1 was not answered.<br>";
     }
+
+    //Question 2
+    if (document.querySelector("#q2").value === "") {
+        feedback.innerHTML += "Question 2 was not answered. Please select one.<br>";
+        isValid = false;
+    }
+
+    //Question 3
+    let q3Answers = ["Jackson", "Franklin", "Jefferson", "Roosevelt"];
+    let q3Answered = false;
+    for (let i = 0; i < q3Answers.length; i++) {
+        if (document.querySelector(`#${q3Answers[i]}`).checked) {
+            q3Answered = true;
+            break;
+        }
+    }
+    if (!q3Answered) {
+        feedback.innerHTML += "Question 3 was not answered. Please check at least one box.<br>";
+        isValid = false;
+    }
+
+    //Question 4
+    if (!document.querySelector("input[name='q4']:checked")) {
+        feedback.innerHTML += "Question 4 was not answered.<br>";
+        isValid = false;
+    }
+
+    //Question 5
+    if (!locked || q5Answers.length != 3) {
+        feedback.innerHTML += "Question 5 must be locked with 3 answers.<br>";
+        isValid = false;
+    }
+
+    //Question 6
+    let q6Answer = Number(document.querySelector("#lakeCountDisplay").value);
+    if (isNaN(q6Answer) || q6Answer < 0 || q6Answer > 20000 || !Number.isInteger(q6Answer)) {
+        feedback.innerHTML += "Question 6 must have a valid lake count.<br>";
+        isValid = false;
+    }
+
+    //Question 7
+    if (!document.querySelector("input[name='q7']:checked")) {
+        feedback.innerHTML += "Question 7 was not answered.<br>";
+        isValid = false;
+    }
+
+    //Question 8
+    if (
+        document.querySelector("#q8first").value === "" ||
+        document.querySelector("#q8second").value === "" ||
+        document.querySelector("#q8third").value === ""
+    ) {
+        feedback.innerHTML += "Question 8 is incomplete.<br>";
+        isValid = false;
+    }
+
+    //Question 9
+    if (!selectImg) {
+        feedback.innerHTML += "Question 9 was not answered. No image selected<br>";
+        isValid = false;
+    }
+
+    //Question 10
+    let q10Answer = Number(document.querySelector("#q10").value);
+    if (q10Answer == null || isNaN(q10Answer) || q10Answer < 1 || q10Answer > 99 || !Number.isInteger(q10Answer)) {
+        feedback.innerHTML += "Question 10 must be a whole number between 1 and 99.<br>";
+        isValid = false;
+    }
+
     return isValid;
 }//isFormValid
 
@@ -141,7 +195,7 @@ function toggleLockQ5() {
 }//toggleLock()
 
 function q5Checker () {
-    const correctAnswers = ["Nebraska", "Missouri", "Wyoming"];
+    let correctAnswers = ["Nebraska", "Missouri", "Wyoming"];
     let count = 0;
 
     for (let i = 0; i < q5Answers.length; i++) {
@@ -154,7 +208,7 @@ function q5Checker () {
 
 function displayQ5Choices() {
     let q5ChoicesArray = ["Alaska", "Washington", "Idaho", "Nebraska",
-         "Minnesota", "Missouri", "Michigan", "New York", "Wyoming", "Vermont", "Maine"];
+            "Minnesota", "Missouri", "Michigan", "New York", "Wyoming", "Vermont", "Maine"];
     q5ChoicesArray = _.shuffle(q5ChoicesArray);
     for (let i = 0; i < q5ChoicesArray.length; i++) {
         document.querySelector("#q5").innerHTML += ` <option value="${q5ChoicesArray[i]}">${q5ChoicesArray[i]}</option>`;
@@ -191,26 +245,24 @@ function gradeQ8 () {
     let q8response2 = document.querySelector("#q8second").value;
     let q8response3 = document.querySelector("#q8third").value;
     let correctCount = 0;
-
-    if (q8response1 != "California") {
-        wrongAnswerQ8(1);
-    } else {
-        rightAnswerQ8(1);
-        correctCount++;
-    }
-    if (q8response2 != "Pennsylvania") {
-        wrongAnswerQ8(2);
-    } else {
-        rightAnswerQ8(2);
-        correctCount++
-    }
-    if (q8response3 != "Kentucky") {
-        wrongAnswerQ8(3);
-    } else {
-        rightAnswerQ8(3);
-        correctCount++
-    }
-
+        if (q8response1 != "California") {
+            wrongAnswerQ8(1);
+        } else {
+            rightAnswerQ8(1);
+            correctCount++;
+        }
+        if (q8response2 != "Pennsylvania") {
+            wrongAnswerQ8(2);
+        } else {
+            rightAnswerQ8(2);
+            correctCount++
+        }
+        if (q8response3 != "Kentucky") {
+            wrongAnswerQ8(3);
+        } else {
+            rightAnswerQ8(3);
+            correctCount++
+        }
     return correctCount;
 }
 
@@ -230,6 +282,25 @@ function rightAnswerQ8(index) {
     }
 }//wrongAnswer for Question 8
 
+
+//Question 9 functions
+function addImageListenerQ9() {
+    for (let i = 0; i < carouselImg.length; i++) {
+        carouselImg[i].addEventListener("click", clickableImage);
+    }
+}//addImageListerner
+
+function clickableImage(event) {
+    for (let i = 0; i < carouselImg.length; i++) {
+        carouselImg[i].style.border = "none";
+        carouselImg[i].style.boxShadow = "none";
+    }
+    let img = event.target;
+    img.style.border = "5px solid green";
+    img.style.outlineOffset = "-5px";
+    img.style.boxShadow = "0 0 10px lime";
+    selectImg = img.parentElement.id;
+}//clickableImage
 
 function gradeQuiz() {
     console.log("Grading quiz...");
@@ -285,7 +356,7 @@ function gradeQuiz() {
 
     //Grading Question 5
     let correctCount = q5Checker();
-    if (correctCount === 3 && q5Answers.length ===3) {
+    if (correctCount === 3 && q5Answers.length === 3) {
         rightAnswer(5);
     } else {
         wrongAnswer(5);
@@ -325,9 +396,113 @@ function gradeQuiz() {
     } else {
         wrongAnswer(10);
     }
-    document.querySelector("#totalScore").innerHTML = `Total Score: ${score}`;
+
+    let scoreDisplay = document.querySelector("#totalScore");
+    let congratsMsg = document.querySelector("#gratsMsg");
+    scoreDisplay.innerHTML = `Total Score: ${score}`;
+    if (score >= 80) {
+        scoreDisplay.className = "text-success";
+        congratsMsg.innerHTML = "Congratulations! You scored an 80 or above.";
+    } else {
+        scoreDisplay.className = "text-danger";
+    }
+
     document.querySelector("#totalAttempts").innerHTML = `Total Attempts: ${++attempts}`;
+    document.querySelector("#totalAttempts").style.display = "block";
     localStorage.setItem("total_attempts", attempts);
     console.log(attempts);
 
+    let submitButton = document.querySelector("#submitBtn");
+    submitButton.disabled = true;
+    submitButton.add("btn-secondary");
+
+
+
+
 }//gradeQuiz
+
+
+//Reset everything
+function redoQuiz() {
+    score = 0;
+    locked = false;
+    q5Answers = [];
+    selectImg = null;
+
+    //Question 1, 2
+    document.querySelector("#q1").value = "";
+    document.querySelector("#q2").value = "";
+
+    //Q3
+    let q3inputs = ["Jackson", "Franklin", "Jefferson", "Roosevelt"];
+    for (let i = 0; i < q3inputs.length; i++) {
+        document.querySelector(`#${q3inputs[i]}`).checked = false;
+    }
+
+    //Question 4
+    let q4inputs = document.querySelectorAll("input[name='q4']");
+    for (let i = 0; i < q4inputs.length; i++) {
+        q4inputs[i].checked = false;
+    }
+
+    //Question 5
+    document.querySelector("#q5").selectedIndex = -1;
+    document.querySelector("#q5").disabled = false;
+    document.querySelector("#q5Lock").value = "Lock it in";
+
+    //Question 6
+    document.querySelector("#lakeCountDisplay").value = "";
+    document.querySelector("#rangeLakes").value = 0;
+
+    //Question 7
+    let q7inputs = document.querySelectorAll("input[name='q7']");
+    for (let i = 0; i < q7inputs.length; i++) {
+        q7inputs[i].checked = false;
+    }
+
+    //Question 8
+    let q8inputs = ["q8first", "q8second", "q8third"];
+    for (let i = 0; i < q8inputs.length; i++) {
+        document.querySelector(`#${q8inputs[i]}`).value = "";
+    }
+
+    //Question 9
+    for (let i = 0; i < carouselImg.length; i++) {
+        carouselImg[i].style.border = "none";
+        carouselImg[i].style.boxShadow = "none";
+    }
+
+    //Question 10
+    document.querySelector("#q10").value = "";
+
+
+    //Feedbacks
+    for (let i = 1; i <= 10; i++) {
+        document.querySelector(`#q${i}Feedback`).innerHTML = "";
+        document.querySelector(`#markImg${i}`).innerHTML = "";
+    }
+
+    document.querySelector("#q5Note").innerHTML = "";
+    document.querySelector("#q6Note").innerHTML = "";
+    document.querySelector("#q8check1").innerHTML = "";
+    document.querySelector("#q8check2").innerHTML = "";
+    document.querySelector("#q8check3").innerHTML = "";
+    document.querySelector("#q9Feedback").innerHTML = "";
+    document.querySelector("#validationFdbk").innerHTML = "";
+
+    //Score
+    let scoreDisplay = document.querySelector("#totalScore");
+    scoreDisplay.innerHTML = "";
+    scoreDisplay.className = "text-info";
+
+    console.log("Everything has been reset");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.querySelector("#totalAttempts").style.display = "none";
+
+    let submitButton = document.querySelector("#submitBtn");
+    submitButton.disabled = false;
+
+    let congratsMsg = document.querySelector("#gratsMsg");
+    congratsMsg.innerHTML = "";
+
+}
