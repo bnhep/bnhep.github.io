@@ -14,15 +14,15 @@
         <header class="text-center custom-header"><h1> Sign Up </h1></header>
     <div class="d-flex justify-content-center custom-container">
         <form id="signupForm" action="welcome.html" class="text-start custom-form">
-            First Name:<input type="text" name="fName"><br> 
-            Last Name: <input type="text" name="lName"><br> 
+            First Name:<input type="text" name="fName"><span id="markImg1"></span><br> 
+            Last Name: <input type="text" name="lName"><span id="markImg2"></span><br> 
             Gender:     
                 <input type="radio" name="gender" value="m">Male
-                <input type="radio" name="gender" value="f">Female<br>
+                <input type="radio" name="gender" value="f">Female<span id="markImg3"></span><br>
                 
                 
-            Zip Code:  <input type="text" id="zip" name="zip"><br>
-                <span id="zipcodeValid"></span> <br>
+            Zip Code:  <input type="text" id="zip" name="zip"><span id="markImg4"></span><br>
+                <span id="zipcodeValid"></span></span> <br>
             City:   <strong><span id="city"></span></strong> <br> 
             Latitude:  <strong><span id="latitude"></span></strong> <br> 
             Longitude: <strong><span id="longitude"></span></strong> <br> <br>
@@ -30,17 +30,17 @@
             State:  
             <select id="state" name="state"> 
                 <option>Select State</option> 
-            </select> <br> 
+            </select><span id="markImg5"></span> <br> 
 
-            Select a County: <select id="county"></select><br><br>
+            Select a County: <select id="county"></select><span id="markImg6"></span><br><br>
 
 
             Desired Username:  
-            <input type="text" id="username" ><br>
+            <input type="text" id="username" ><span id="markImg7"></span><br>
             <span id="usernameError"></span><br><br>
-            Password: <input type="password" id="pwd"><br>            
+            Password: <input type="password" id="pwd"><span id="markImg8"></span><br>            
             <span id="suggestedPwd"></span> <br> 
-            Type Password Again: <input type="password" id="pwdAgain"><br>
+            Type Password Again: <input type="password" id="pwdAgain"><span id="markImg9"></span><br>
 
             <span id="passwordError"></span><br>
             <div class="text-center custom-submit">

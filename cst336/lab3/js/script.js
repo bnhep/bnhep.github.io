@@ -29,10 +29,12 @@ async function displayCity() {
         if (data == null || !data || data == false) {
             zipValidation.innerHTML = "Zip code not found";
             zipValidation.style.color = "red";
+            document.querySelector("#markImg4").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
             document.querySelector("#city").innerHTML = "";
             document.querySelector("#latitude").innerHTML = "";
             document.querySelector("#longitude").innerHTML = "";
         } else {
+            document.querySelector("#markImg4").innerHTML = "<img src='img/accept-icon.png' alt='checkmark'>";
             document.querySelector("#city").innerHTML = data.city;
             document.querySelector("#latitude").innerHTML = data.latitude;
             document.querySelector("#longitude").innerHTML = data.longitude;
@@ -42,6 +44,7 @@ async function displayCity() {
         console.error("Error:", networkErr);
         zipValidation.innerHTML = "Please enter a valid Zip Code of 5 digits";
         zipValidation.style.color = "red";
+        document.querySelector("#markImg4").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
         document.querySelector("#city").innerHTML = "";
         document.querySelector("#latitude").innerHTML = "";
         document.querySelector("#longitude").innerHTML = "";
@@ -77,10 +80,12 @@ async function checkUsername () {
         userNameWasTaken = false;
         if (data.available) {
             usernameError.innerHTML = `Username is available!`;
+            document.querySelector("#markImg7").innerHTML = "<img src='img/accept-icon.png' alt='checkmark'>";
             usernameError.style.color = "green";
             userNameWasTaken = true;
         } else {
             usernameError.innerHTML = "Username is taken. Please try again."
+            document.querySelector("#markImg7").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
             usernameError.style.color = "red";
         }
     } catch (networkErr) {
@@ -127,45 +132,125 @@ function validateForm(e) {
     let username = document.querySelector("#username").value;
     let usernameErr = document.querySelector("#usernameError");
     usernameErr.innerHTML = "";
+
+    //clear up the marks to double check when submitting
+    for (let i = 1; i <= 9; i++) {
+        let mark = document.querySelector(`#markImg${i}`);
+        if (mark) { 
+            mark.innerHTML = "";
+        }
+    }
+    
+    //check if first name is even typed
+    let firstName = document.querySelector('input[name="fName"]').value.trim();
+    if (firstName === "") {
+        isValid = false;
+        document.querySelector("#markImg1").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+    }
+
+    //check if last name is even typed
+    let lastName = document.querySelector('input[name="lName"]').value.trim();
+    if (lastName === "") {
+        isValid = false;
+        document.querySelector("#markImg2").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+    }
+
+    //check if gender is chosen
+    let genderSelected = document.querySelector('input[name="gender"]:checked');
+    if (!genderSelected) {
+        isValid = false;
+        document.querySelector("#markImg3").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+    }
+
+    //check if zipcode is typed
+    let zip = document.querySelector("#zip").value.trim();
+    let zipValidation = document.querySelector("#zipcodeValid");
+    if (zip === "") {
+        isValid = false;
+        document.querySelector("#markImg4").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+        zipValidation.innerHTML = "Zip code not found";
+        zipValidation.style.color = "red";
+    } else if (!document.querySelector("#city").innerHTML) {
+        isValid = false;
+        document.querySelector("#markImg4").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+        zipValidation.innerHTML = "Zip code not found";
+        zipValidation.style.color = "red";
+    } else {
+        document.querySelector("#markImg4").innerHTML = "<img src='img/accept-icon.png' alt='checkmark'>";
+        zipValidation.innerHTML = "";     
+    }
+
+    //check is state is chosen
+    let state = document.querySelector("#state").value;
+    if (state === "Select State") {
+        isValid = false;
+        document.querySelector("#markImg5").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+    } 
+
+    //check if county is chosen
+    let county = document.querySelector("#county").value;
+    if (!county || county === "Select County") {
+        isValid = false;
+        document.querySelector("#markImg6").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+    }
+
     //Check if username is even types
     if (username.length == 0) {
         usernameErr.innerHTML = "Username Required!";
         usernameErr.style.color = "red";
+        document.querySelector("#markImg7").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
         isValid = false;
     }
 
     //Check if username is empty or is taken
     if (username === ""){
         usernameErr.innerHTML = "Please enter a username.";
+        document.querySelector("#markImg7").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
         usernameErr.style.color = "red";
         isValid = false;         
     } else if (!userNameWasTaken){
         usernameErr.innerHTML = "Username is taken. Please try again.";
+        document.querySelector("#markImg7").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
         usernameErr.style.color = "red";
         isValid = false;        
     } else {
         usernameErr.innerHTML = "Username is available!";
+        document.querySelector("#markImg7").innerHTML = "<img src='img/accept-icon.png' alt='checkmark'>";
         usernameErr.style.color = "green";
     }
 
     // Check if 6 characters
     let pwd = document.querySelector("#pwd").value;
     let pwdErr = document.querySelector("#passwordError");
+    let pwdAgain = document.querySelector("#pwdAgain").value;
     pwdErr.innerHTML = ""
+
+    if (pwd === ""){
+        document.querySelector("#markImg8").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+        isValid = false;
+    }
+
+    if (pwdAgain ==="") {
+        document.querySelector("#markImg9").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+        isValid = false;
+    }
+
     if (pwd.length < 6) {
         pwdErr.style.color = "red";
         pwdErr.innerHTML = "Password must have at least 6 characters."
+        document.querySelector("#markImg8").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+        document.querySelector("#markImg9").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
         isValid = false;
     }
 
     // Check if pwd value and identical to password again
-    let pwdCheck = document.querySelector("#pwdAgain").value;
-    if (pwd !== pwdCheck) {
+    if (pwd !== pwdAgain) {
         pwdErr.style.color = "red";
         pwdErr.innerHTML = "Passwords do not match. Retype Password."
+        document.querySelector("#markImg8").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
+        document.querySelector("#markImg9").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
         isValid = false;
     }
-
 
     if (!isValid) {
         e.preventDefault();
