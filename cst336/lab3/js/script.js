@@ -10,7 +10,6 @@ document.querySelector("#signupForm").addEventListener("submit", function(event)
 //global variables
 let userNameWasTaken = false;
 
-
 //functions
 displayAllStates();
 

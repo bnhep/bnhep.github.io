@@ -24,6 +24,8 @@ footer {
     font-size: 0.8em;
     color: #4c4d4c;
     padding: 25px;
+    backdrop-filter: blur(6px) saturate(110%);
+    border: 1px solid rgba(255,255,255,0.18);
 }
 
 .footer_logo {
