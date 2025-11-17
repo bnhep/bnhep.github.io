@@ -42,7 +42,7 @@ async function displayCity() {
 
     } catch (networkErr) {
         console.error("Error:", networkErr);
-        zipValidation.innerHTML = "Please enter a valid Zip Code of 5 digits";
+        zipValidation.innerHTML = "Please enter a valid Zip Code";
         zipValidation.style.color = "red";
         document.querySelector("#markImg4").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
         document.querySelector("#city").innerHTML = "";
@@ -219,7 +219,7 @@ function validateForm(e) {
         usernameErr.style.color = "green";
     }
 
-    // Check if 6 characters
+    // Check if 6 characters passwords and other validations
     let pwd = document.querySelector("#pwd").value;
     let pwdErr = document.querySelector("#passwordError");
     let pwdAgain = document.querySelector("#pwdAgain").value;
@@ -230,7 +230,7 @@ function validateForm(e) {
         isValid = false;
     }
 
-    if (pwdAgain ==="") {
+    if (pwdAgain === "") {
         document.querySelector("#markImg9").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
         isValid = false;
     }
