@@ -116,7 +116,7 @@ async function suggestPassword () {
         let response = await fetch(url);
         let data = await response.json();
         let pwdSuggest = document.querySelector("#suggestedPwd");
-        pwdSuggest.style.color = "orange";
+        pwdSuggest.style.color = "#ff6700";
         pwdSuggest.innerHTML = `Suggested password: <span id="pwd-fontchange" style="color:black; font-weight: bold;">${data.password}</span>`;
     } catch (networkErr) {
         console.error("Failed to fetch password:", networkErr);
