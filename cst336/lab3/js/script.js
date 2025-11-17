@@ -27,7 +27,7 @@ async function displayCity() {
         console.log(data);
 
         if (data == null || !data || data == false) {
-            zipValidation.innerHTML = "Zip code not found";
+            zipValidation.innerHTML = "Zip code not found.";
             zipValidation.style.color = "red";
             document.querySelector("#markImg4").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
             document.querySelector("#city").innerHTML = "";
@@ -168,12 +168,12 @@ function validateForm(e) {
     if (zip === "") {
         isValid = false;
         document.querySelector("#markImg4").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
-        zipValidation.innerHTML = "Zip code not found";
+        zipValidation.innerHTML = "Zip code not found.";
         zipValidation.style.color = "red";
     } else if (!document.querySelector("#city").innerHTML) {
         isValid = false;
         document.querySelector("#markImg4").innerHTML = "<img src='img/incorrect-icon.png' alt='xmark'>";
-        zipValidation.innerHTML = "Zip code not found";
+        zipValidation.innerHTML = "Zip code not found.";
         zipValidation.style.color = "red";
     } else {
         document.querySelector("#markImg4").innerHTML = "<img src='img/accept-icon.png' alt='checkmark'>";
