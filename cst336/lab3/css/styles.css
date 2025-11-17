@@ -152,6 +152,7 @@ body {
 }
 
 input[type="submit"], #back2home {
+    width: 100%;
     padding: 10px 20px;
     border: 2px solid var(--border-clr);
     border-radius: 12px;
