@@ -1,0 +1,36 @@
+:root {
+    --header: #cad2c5;
+    --boxbg: #52796f;
+    --border-clr: #354f52;
+    --shadow-clr: #2f3e46;
+    --header-font: #F5F5DC;
+    --btn-hover: #F5F5DC;
+    --font-border: #FF4081;
+    --background-full: #77bfa3;
+    --Classic-Crimson: #d62839;
+    --Rosewood: #ba324f; 
+    --Baltic-Blue: #175676;
+    --Turquoise-Surf: #4ba3c3;
+    --sand-reflection: #c7a7ff;
+    --Pale-Sky: #cce6f4;
+}
+
+* { 
+    box-sizing: border-box; 
+}
+
+footer {
+    text-align: center;
+    font-size: 0.8em;
+    color: #4c4d4c;
+    padding: 25px;
+    backdrop-filter: blur(6px) saturate(110%);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+.footer_logo {
+    padding: 5px;
+    margin: 0 auto;    
+    width: 300px;
+    height: auto;
+}
