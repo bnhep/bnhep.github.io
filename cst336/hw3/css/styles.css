@@ -13,6 +13,12 @@
     --Turquoise-Surf: #4ba3c3;
     --sand-reflection: #c7a7ff;
     --Pale-Sky: #cce6f4;
+    --color-forest-green: #2F4F2F;
+    --color-gold: #D4AF37;
+    --color-dark-brown: #4B3621;
+    --color-parchment: #F5F0E1;
+    --color-rust: #B05A2C;
+    --color-misty-gray: #8E8E8E;
 }
 
 * { 
@@ -41,39 +47,78 @@ footer {
     cursor: pointer;
 }
 
-.text-custom {
-    
-}
-
 #characterInfo, #cardInfo {
     margin-bottom: 15px;
     margin: 0 auto;
-    color: var(--font-border);
+    color: var(--color-misty-gray);
+    accent-color: var(--color-forest-green);
     text-decoration: none;
-    border: #175676 1px solid;
+    border: var(--color-forest-green) 2px solid;
+    background-color: var(--color-parchment);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 6px 6px 10px var(--shadow-clr);
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 #characterform {
     margin: 0 auto;
     padding: 20px;
-    border: 2px var(--border-clr) solid;
+    border: 2px var(--color-dark-brown) solid;
     border-radius: 10px;
-    box-shadow: 6px 6px 10px var(--shadow-clr);
-    background-color: var(--background-full);  
+    box-shadow: 6px 6px 10px var(--color-dark-brown);
+    background-color: var(--color-dark-brown);  
 }
 
-.result-fade {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transform: translateY(10px);
-    transition: opacity .4s ease, max-height .4s ease, transform .4s ease;
+input[type="radio"] {
+    width: 20px;
+    height: 15px;
+    accent-color: var(--color-forest-green);
+    margin-right: 5px;
+    margin-left: 15px;
+    cursor: pointer;
+    background-color: var(--btn-hover);
+    font-weight: bolder;
 }
-.result-fade.show {
-    opacity: 1;
-    max-height: 800px;
-    transform: translateY(0);
+
+.custom-header {
+    background-color: var(--header);
+    color: var(--header-font);
+    border-radius: 10px;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.body-bg {
+    background-color: var(--color-parchment);
+}
+
+h1, h2, h3, h4, h5, h6, label, p, span, div {
+    font-family: 'Georgia', serif;
+    accent-color: var(--color-forest-green);
+    color: var(--color-dark-brown);
+}
+
+h6 a {
+    color: var(--color-rust);
+}
+
+a {
+    color: var(--color-rust);
+}
+
+a:hover {
+    color: var(--color-gold);
+}
+
+#nameBtn, #cardBtn, #quoteBtn {
+    background-color: var(--color-rust);
+    color: var(--color-parchment);
+    border-color: #8E8E8E;
+}
+
+#nameBtn:hover, #cardBtn:hover, #quoteBtn:hover {
+    background-color: var(--color-rust);
+    color: var(--color-parchment);
+    background-color: var(--color-gold);
+    color: var(--color-dark-brown);
+    border-color: #8E8E8E;
 }

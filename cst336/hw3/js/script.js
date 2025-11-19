@@ -8,7 +8,6 @@ for (let i = 0; i < chooseOptions.length; i++) {
 document.querySelector("#searchForm").addEventListener("submit", function(event) {
     validateForm(event);
 });
-
 document.querySelector("#quoteBtn").addEventListener("click", displayQuote);
 document.querySelector("#nameBtn").addEventListener("click", validateCharacter);
 document.querySelector("#cardBtn").addEventListener("click", validateCard);
@@ -57,8 +56,10 @@ async function validateCharacter() {
         return;
     }
 
+    //Get the character info object from fetch function
     let characterInfo = await fetchCharactersByName(nameValue);
     console.log(characterInfo);
+    //double check if character exists
     if (!characterInfo) {
         charDisplay.style.display = "none";
         searchFeedback.textContent = "Character not found. Please check the name and try again.";
@@ -105,6 +106,7 @@ async function validateCard() {
         return;
     }
 
+    //Display card info with image if available
     let imgURL = "";
     if (card.imagesrc) {
         imgURL = "https://ringsdb.com" + card.imagesrc;
@@ -131,6 +133,7 @@ function chooseOptionsChange() {
     let nameDisplay = document.querySelector("#nameSearch");
     let cardDisplay = document.querySelector("#cardSearch");
     let quoteDisplay = document.querySelector("#quoteSearch");
+    //hide all sections initially
     nameDisplay.style.display = "none";
     cardDisplay.style.display = "none";
     quoteDisplay.style.display = "none";
@@ -140,6 +143,7 @@ function chooseOptionsChange() {
 
     searchFeedback.textContent = "";
     searchFeedback.style.color = "red";
+    //show the selected section and set placeholder text
     if (optionResult === "Character") {
         nameDisplay.style.display = "block";
         nameInput.placeholder = "e.g., Frodo Baggins, Boromir";
@@ -150,7 +154,6 @@ function chooseOptionsChange() {
         quoteDisplay.style.display = "block";
         quoteInput.placeholder = "Enter a movie by title";
     }
-
 }
 
 async function displayQuote() {
@@ -223,7 +226,7 @@ async function fetchCharactersByName(name) {
         }
         return data.docs[0];
 
-    }catch(networkErr) {
+    } catch(networkErr) {
         console.error("Error fetching character:", networkErr);
     }
 }
@@ -239,7 +242,7 @@ async function fetchCardsByName(cardName) {
         }
         return data[0];
 
-    }catch(networkErr) {
+    } catch(networkErr) {
         console.error("Error fetching card:", networkErr);
     }
 }
