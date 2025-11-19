@@ -44,3 +44,36 @@ footer {
 .text-custom {
     
 }
+
+#characterInfo, #cardInfo {
+    margin-bottom: 15px;
+    margin: 0 auto;
+    color: var(--font-border);
+    text-decoration: none;
+    border: #175676 1px solid;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 6px 6px 10px var(--shadow-clr);
+}
+
+#characterform {
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px var(--border-clr) solid;
+    border-radius: 10px;
+    box-shadow: 6px 6px 10px var(--shadow-clr);
+    background-color: var(--background-full);  
+}
+
+.result-fade {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition: opacity .4s ease, max-height .4s ease, transform .4s ease;
+}
+.result-fade.show {
+    opacity: 1;
+    max-height: 800px;
+    transform: translateY(0);
+}

@@ -16,7 +16,8 @@
 <body class="text-center">
     <header id="custom-header" class="py-4">
         <h1 class="text-center mb-4">LOTR Explorer</h1>
-        <h4>Find information about the characters in Lord of the Rings <br>and display related TCG cards using The-One-API and ringsDB api</h4>
+        <h6>Find information about the characters and TCG cards related to Lord of the Rings 
+            <br>using <a href="https://the-one-api.dev/" target="_blank">The One Api</a> and <a href="https://ringsdb.com/api/" target="_blank">ringsDB API</a> </h6>
     </header>
     <br><hr>
     <div id="searchContainer" class="mb-4">
@@ -27,16 +28,16 @@
                 <input class="radio-custom" type="radio" name="chooseOption" value="randomQuote">Random Quote<br>
             </div>
 
-        <form id="searchForm" action="results.html" class="mx-auto w-25 text-start">
+        <form id="searchForm" class="mx-auto w-25 text-start">
             <div id="nameSearch" class="mb-4" style="display:none;">
                 <label for="charSearch">Search a character by name:</label>
-                <input id="searchName" class="form-control text-custom" name="searchBar" type="text" placeholder="e.g., Frodo Baggins" aria-label="Search by name">
-                <button id="nameBtn" class="btn btn-success w-100" type="submit">Search</button>
+                <input id="searchName" class="form-control text-custom" name="searchBar" type="text" placeholder="e.g., Frodo Baggins, Boromir" aria-label="Search by name">
+                <button id="nameBtn" class="btn btn-success w-100" type="button">Search</button>
             </div>
             <div id="cardSearch" class="mb-4" style="display:none;">
                 <label id="searchBarLabel" for="searchBar">Search TCG Card:</label>
                 <input id="searchCard" class="form-control text-custom" name="searchBar" type="text" placeholder="e.g., Aragon" aria-label="Search by card">
-                <button id="cardBtn" class="btn btn-success w-100" type="submit">Search</button>
+                <button id="cardBtn" class="btn btn-success w-100" type="button">Search</button>
             </div>
             <div id="quoteSearch" class="mb-4" style="display:none;">
                 <label for="searchQuote">Select a movie for a random quote:</label>
@@ -45,12 +46,23 @@
                 </select>
                 <button id="quoteBtn" class="btn btn-success w-100" type="button">Find a Quote</button>
             </div>
-        <span id="formError" class="text-center"></span>
         </form>
+        <span id="formError" class="text-center"></span>
 
+        <div id="quoteDisplay"><span id="quoteInnerDisplay"></span></div><br>
 
-        <div id="quoteDisplay"><span id="quoteInnerDisplay"></span></div>
+            <div id="characterForm" class="mb-4">
+                <div class="col-md-6" id="characterInfo" style="display:none;">
+                    <p class="text-muted">.</p>
+                </div>
+                <br>
+                 <div class="col-md-6" id="cardInfo" style="display:none;">
+                    <p class="text-muted">.</p>
+                </div>
+                               
+            </div>
     </div>
+
     <footer class="mt-5">
         <hr>
         <figure>

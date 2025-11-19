@@ -10,84 +10,114 @@ document.querySelector("#searchForm").addEventListener("submit", function(event)
 });
 
 document.querySelector("#quoteBtn").addEventListener("click", displayQuote);
+document.querySelector("#nameBtn").addEventListener("click", validateCharacter);
+document.querySelector("#cardBtn").addEventListener("click", validateCard);
 
 //function calls
-//displays race and realms in dropdown option
+//displays the movies for quote search
 populateMovies();
 
 //functions
+//fetch movies for quote dropdown
 async function populateMovies() {
     try{
-    let selectOption = document.querySelector("#searchQuote");
-    let movieTitle = selectOption.value;
+        let selectOption = document.querySelector("#searchQuote");
+        let movieTitle = selectOption.value;
 
-    let url = `https://the-one-api.dev/v2/movie`; 
-    let response = await fetch(url, 
-        { headers: 
-            { Authorization: `Bearer Y3RIDmuG9YtV5BXICaiK` }
-        }); 
-    let data = await response.json();
-    selectOption.innerHTML = `<option value="">Select a movie...</option>`;
-    for (let i of data.docs) {
-        selectOption.innerHTML += `<option value= "${i._id}"> ${i.name} </option>`
-    }
+        let url = `https://the-one-api.dev/v2/movie`; 
+        let response = await fetch(url, 
+            { headers: 
+                { Authorization: `Bearer Y3RIDmuG9YtV5BXICaiK` }
+            }); 
+        let data = await response.json();
 
+        selectOption.innerHTML = `<option value="">Select a movie...</option>`;
+        for (let i of data.docs) {
+            selectOption.innerHTML += `<option value= "${i._id}"> ${i.name} </option>`
+        }
 
-    } catch (networkErr) {
+    } catch(networkErr) {
         console.error("Error getting movies:", networkErr);
     }
 }
 
-function validateForm(e) {
-    let isValid = true;
+//validate the form based on selected option
+async function validateCharacter() {
+    let nameInput = document.querySelector("#searchName");
     let searchFeedback = document.querySelector("#formError");
-    //reset everything
+    let charDisplay = document.querySelector("#characterInfo");
+    let nameValue = nameInput.value.trim();
     searchFeedback.textContent = "";
-    searchFeedback.style.color = "red";
-
-    document.querySelector("#searchName").style.border = "";
-    document.querySelector("#searchCard").style.border = "";
-    document.querySelector("#searchQuote").style.border = "";
-    // Get the selected search type radio based on checked
-    let selectedRadio = document.querySelector("input[name='chooseOption']:checked");
-
-    if (!selectedRadio) {
-        //check if anything selected
-        return true;
+    nameInput.style.border = "";
+    charDisplay.innerHTML = "";
+    if (nameValue === "") {
+        charDisplay.style.display = "none";
+        searchFeedback.textContent = "Please enter a character name.";
+        nameInput.style.border = "2px solid red";
+        return;
     }
 
-    let searchType = selectedRadio.value;
-
-    if (searchType === "Character") {
-        let searchInput = document.querySelector("#searchName");
-        let value = searchInput.value.trim();
-        if (value === "") {
-            searchFeedback.textContent = "Please enter a name";
-            searchInput.style.border = "2px solid red";
-            isValid = false;
-        } else {
-            searchInput.style.border = "2px solid green";
-        }
-    } else if (searchType === "Cards") {
-        let cardSelect = document.querySelector("#searchCard");
-        let cardValue = cardSelect.value.trim();
-        if (cardValue === "") {
-            cardSelect.style.border = "2px solid red";
-            searchFeedback.textContent = "Please enter a card name";
-            isValid = false;
-        }
-    } else if (searchType === "randomQuote") {
-        let quoteSelect = document.querySelector("#searchQuote");
-        let quoteValue = quoteSelect.value.trim();
-        if (quoteValue === "") {
-            quoteSelect.style.border = "2px solid red";
-            searchFeedback.textContent = "Please enter a movie";
-            isValid = false;
-        }
+    let characterInfo = await fetchCharactersByName(nameValue);
+    console.log(characterInfo);
+    if (!characterInfo) {
+        charDisplay.style.display = "none";
+        searchFeedback.textContent = "Character not found. Please check the name and try again.";
+        nameInput.style.border = "2px solid red";
+        return;
     }
-    if (!isValid) {
-    e.preventDefault();
-    } 
+    charDisplay.style.display = "block";
+    charDisplay.innerHTML = `
+        <strong>Name:</strong> ${characterInfo.name} <br>
+        <strong>Race:</strong> ${characterInfo.race || "Unknown"} <br>
+        <strong>Gender:</strong> ${characterInfo.gender || "Unknown"} <br>
+        <strong>Birth:</strong> ${characterInfo.birth || "Unknown"} <br>
+        <strong>Death:</strong> ${characterInfo.death || "Unknown"} <br>
+        <strong>Realm:</strong> ${characterInfo.realm || "Unknown"} <br>
+        <strong>Height:</strong> ${characterInfo.height || "Unknown"} <br>
+        <strong>Hair:</strong> ${characterInfo.hair || "Unknown"} <br>
+        <strong>Spouse:</strong> ${characterInfo.spouse || "Unknown"} <br>
+        <strong>Wiki URL:</strong> <a href="${characterInfo.wikiUrl}" target="_blank">${characterInfo.wikiUrl}</a>
+    `;
+}
+
+async function validateCard() {
+    let cardInput = document.querySelector("#searchCard");
+    let searchFeedback = document.querySelector("#formError");
+    let cardDisplay = document.querySelector("#cardInfo");
+    let cardValue = cardInput.value.trim();
+    searchFeedback.textContent = "";
+    cardInput.style.border = "";
+    cardDisplay.innerHTML = "";
+    if (cardValue === "") {
+        cardDisplay.style.display = "none";
+        searchFeedback.textContent = "Please enter a card name.";
+        cardInput.style.border = "2px solid red";
+        return;
+    }
+
+    //Get the card info object
+    let card = await fetchCardsByName(cardValue);
+    console.log(card);
+    if (!card) {
+        searchFeedback.textContent = "Card not found. Try another name.";
+        cardInput.style.border = "2px solid red";
+        cardDisplay.style.display = "none";
+        return;
+    }
+
+    let imgURL = "";
+    if (card.imagesrc) {
+        imgURL = "https://ringsdb.com" + card.imagesrc;
+    }
+
+    cardDisplay.style.display = "block";
+    cardDisplay.innerHTML = `
+        ${imgURL ? `<img src="${imgURL}" alt="${card.name}" width="200"><br><br>` : ""}
+        <strong>${card.name}</strong><br>
+        <strong>Type:</strong> ${card.type_name || "Unknown"}<br>
+        <strong>Sphere:</strong> ${card.sphere_name || "Unknown"}<br><br>
+        ${card.text || ""}
+    `;
 }
 
 //Change the search options based on chosen option
@@ -104,8 +134,6 @@ function chooseOptionsChange() {
     nameDisplay.style.display = "none";
     cardDisplay.style.display = "none";
     quoteDisplay.style.display = "none";
-    let innerquoteDisplay = document.querySelector("#quoteInnerDisplay");
-    innerquoteDisplay.textContent = "";
     nameInput.style.border = "";
     cardInput.style.border = "";
     quoteInput.style.border = "";
@@ -114,10 +142,10 @@ function chooseOptionsChange() {
     searchFeedback.style.color = "red";
     if (optionResult === "Character") {
         nameDisplay.style.display = "block";
-        nameInput.placeholder = "e.g., Frodo Baggins";
+        nameInput.placeholder = "e.g., Frodo Baggins, Boromir";
     } else if (optionResult === "Cards") {
         cardDisplay.style.display = "block";
-        cardInput.placeholder = "Enter a card name";
+        cardInput.placeholder = "e.g., Aragorn, Gandalf";
     } else {
         quoteDisplay.style.display = "block";
         quoteInput.placeholder = "Enter a movie by title";
@@ -132,7 +160,6 @@ async function displayQuote() {
     searchFeedback.textContent = "";
     quoteInput.style.border = "";
     let quoteValue = quoteInput.value.trim();
-
     if (quoteValue === "") {
         searchFeedback.textContent = "Please enter a movie";
         quoteInput.style.border = "2px solid red";
@@ -176,8 +203,9 @@ async function fetchQuotesByMovie(quoteValue) {
 
         let random = Math.floor(Math.random() * quotes.length);
         return quotes[random];
-    } catch (err) {
-        console.error("Error fetching quotes:", err);
+
+    } catch(networkErr) {
+        console.error("Error fetching quotes:", networkErr);
     }
 }
 
@@ -189,38 +217,29 @@ async function fetchCharactersByName(name) {
                 { Authorization: `Bearer Y3RIDmuG9YtV5BXICaiK` }
             }); 
         let data = await response.json();
+
         if (!data.docs || data.docs.length === 0){
             return null;
         }
         return data.docs[0];
-    }catch(networkErr){
-        console.error("Error fetching character:", err);
+
+    }catch(networkErr) {
+        console.error("Error fetching character:", networkErr);
     }
 }
 
-async function displayCharacterCard() {
-    let searchInput = document.querySelector("#searchName");
-    let charDisplay = document.querySelector("#characterInfo");
-    let searchFeedback = document.querySelector("#formError");
+async function fetchCardsByName(cardName) {
+    try {
+        let url = `https://ringsdb.com/api/public/cards/search/${encodeURIComponent(cardName.toLowerCase())}`;
+        let response = await fetch(url);
+        let data = await response.json();
 
-    let name = searchInput.value.trim();
-    if (!name) {
-        searchFeedback.innerHTML = "Please enter a character name.";
-        searchInput.style.border = "2px solid red";
-        return;
+        if (!data || data.length === 0) {
+            return null;
+        }
+        return data[0];
+
+    }catch(networkErr) {
+        console.error("Error fetching card:", networkErr);
     }
-    //clean the feedback and border
-    searchFeedback.textContent = "";
-    input.style.border = "";
-
-    let characterInfo = await fetchCharactersByName(name);
-
-    charDisplay.innerHTML = `
-        <strong>Name:</strong> ${characterInfo.name} <br>
-        <strong>Race:</strong> ${characterInfo.race || "Unknown"} <br>
-        <strong>Gender:</strong> ${characterInfo.gender || "Unknown"} <br>
-        <strong>Birth:</strong> ${characterInfo.birth || "Unknown"} <br>
-        <strong>Death:</strong> ${characterInfo.death || "Unknown"} <br>
-        <strong>Realm:</strong> ${characterInfo.realm || "Unknown"} <br>
-    `;
 }
