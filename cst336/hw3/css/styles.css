@@ -34,3 +34,13 @@ footer {
     width: 300px;
     height: auto;
 }
+
+.radio-custom {
+    margin-right: 5px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.text-custom {
+    
+}

@@ -4,34 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.2/underscore-umd-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- external styling -->
+    <link href="css/styles.css" rel="stylesheet">
 </head>
-<body>
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <footer>
-  
-            <figure>
-                <a href="https://csumb.edu/"><img src="img/footer_logo.png" alt="Logo of CSUMB" class="footer_logo"></a>
-            </figure>
+<body class="text-center">
+    <header id="custom-header" class="py-4">
+        <h1 class="text-center mb-4">LOTR Explorer</h1>
+        <h4>Find information about the characters in Lord of the Rings <br>and display related TCG cards using The-One-API and ringsDB api</h4>
+    </header>
+    <br><hr>
+    <div id="searchContainer" class="mb-4">
+        <h4>Choose search options:</h4><br>
+            <div class="mb-4">
+                <input class="radio-custom" type="radio" name="chooseOption" value="Character">Characters
+                <input class="radio-custom" type="radio" name="chooseOption" value="Cards">Cards
+                <input class="radio-custom" type="radio" name="chooseOption" value="randomQuote">Random Quote<br>
+            </div>
 
-            CST336 Internet Programming. 2025&copy; Nhep <br>
-            <strong>Disclaimer:</strong> This website is for academic purposes.
-        </footer>
+        <form id="searchForm" action="results.html" class="mx-auto w-25 text-start">
+            <div id="nameSearch" class="mb-4" style="display:none;">
+                <label for="charSearch">Search a character by name:</label>
+                <input id="searchName" class="form-control text-custom" name="searchBar" type="text" placeholder="e.g., Frodo Baggins" aria-label="Search by name">
+                <button id="nameBtn" class="btn btn-success w-100" type="submit">Search</button>
+            </div>
+            <div id="cardSearch" class="mb-4" style="display:none;">
+                <label id="searchBarLabel" for="searchBar">Search TCG Card:</label>
+                <input id="searchCard" class="form-control text-custom" name="searchBar" type="text" placeholder="e.g., Aragon" aria-label="Search by card">
+                <button id="cardBtn" class="btn btn-success w-100" type="submit">Search</button>
+            </div>
+            <div id="quoteSearch" class="mb-4" style="display:none;">
+                <label for="searchQuote">Select a movie for a random quote:</label>
+                <select id="searchQuote" class="form-control text-custom">
+                    <option value="">Select a movie...</option>
+                </select>
+                <button id="quoteBtn" class="btn btn-success w-100" type="button">Find a Quote</button>
+            </div>
+        <span id="formError" class="text-center"></span>
+        </form>
+
+
+        <div id="quoteDisplay"><span id="quoteInnerDisplay"></span></div>
+    </div>
+    <footer class="mt-5">
+        <hr>
+        <figure>
+            <a href="https://csumb.edu/"><img src="img/footer_logo.png" alt="Logo of CSUMB" class="footer_logo"></a>
+        </figure>
+
+        CST336 Internet Programming. 2025&copy; Nhep <br>
+        <strong>Disclaimer:</strong> This website is for academic purposes.
+    </footer>
         <script src="js/script.js"></script>
 </body>
 </html>
